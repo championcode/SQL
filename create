@@ -1,0 +1,17 @@
+"""
+Creating sql database using python
+"""
+
+import sqlite3
+Book = sqlite3.connect('book.db')  # Book is the connection object and book.db is the database file
+c_book = Book.cursor()  # c_book is the cursor object
+
+c_book.execute(''' CREATE TABLE Books(
+BookID INTEGER PRIMARY KEY AUTOINCREMENT,
+Title TEXT(30) NOT NULL,
+Author TEXT(30) NOT NULL,
+Price REAL NOT NULL,
+Publications TEXT(30) );
+''')
+
+Book.close()  # closing the connection
