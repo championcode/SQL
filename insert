@@ -1,0 +1,15 @@
+"""
+Inserting values into sql database using python
+"""
+
+import sqlite3
+Book = sqlite3.connect('book.db')  # Book is the connection object and book.db is the database file
+c_book = Book.cursor()  # c_book is the cursor object
+bookid = int(input('Enter the book id no : '))
+booktitle = input('Enter the title of the book : ')
+bookauthor = input('Enter the author of the book : ')
+bookprice = input('Enter the price of the book : ')
+
+c_book.execute("INSERT INTO Books('BookID', 'Title', 'Author', 'Price') VALUES(?, ?, ?, ?);", (bookid, booktitle, bookauthor, bookprice))
+Book.commit()
+Book.close()
